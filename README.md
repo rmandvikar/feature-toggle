@@ -8,3 +8,7 @@
 
 `ToDial(count)` returns `true` for first `count` calls, and `false` after. It's useful to sample few calls before dialing with a percentage.
 
+#### CountThenPercentageDial
+
+`ToDial(count, percentage)` returns `true` for first `count` calls, and then with a `percentage` probability. It uses `CountDial` and `PercentageDial` underneath the hood, and provides flexibility to sample few calls first and then dial with a percentage. Due to the lock perf hit, it's better to eventually change to `PercentageDial`.
+
