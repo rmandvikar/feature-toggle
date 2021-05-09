@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Few dials for feature toggle.</Description>
+    <PackageTags>feature toggle</PackageTags>
+    <RepositoryUrl>https://github.com/rmandvikar/feature-toggle</RepositoryUrl>
+    <Authors>hippy</Authors>
+    <Company>hippy</Company>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
 </Project>
