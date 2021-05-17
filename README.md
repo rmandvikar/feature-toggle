@@ -14,5 +14,5 @@
 
 #### GuidDial
 
-`ToDial(guid, percentage)` returns `true` if the calculated value of `guid` (`[0.01-100.00]` and deterministic) is less than or equal to `percentage`. This dial makes the dialing a function of something (guid) versus randomness. It's deterministic so `IsDial(guid)` will keep returning `true` as long as the `percentage` is same or increasing.
+`ToDial(guid, percentage)` returns `true` if the calculated value of `guid` (`[0.01-100.00]` and deterministic) is less than or equal to `percentage`. This dial makes the dialing a function of something (guid) versus randomness. It's deterministic so `IsDial(guid, percentage)` will keep returning `true` as long as the `percentage` is same or increasing.
 
