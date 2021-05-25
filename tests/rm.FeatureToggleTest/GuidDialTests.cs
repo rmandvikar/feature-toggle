@@ -76,5 +76,36 @@ namespace rm.FeatureToggleTest
 				Console.WriteLine(stopwatch.ElapsedMilliseconds);
 			}
 		}
+
+		[TestFixture]
+		public class ToByteArrayMatchingStringRepresentation
+		{
+			[Test]
+			public void Verify_ToByteArrayMatchingStringRepresentation()
+			{
+				Console.WriteLine($"IsLittleEndian: {BitConverter.IsLittleEndian}");
+
+				var guid = Guid.NewGuid();
+				var guidN = guid.ToString("N");
+				Console.WriteLine($"                                          guid: {guidN}");
+
+				var bytes = guid.ToByteArray();
+				var hex = BitConverter.ToString(bytes).ToLower().Replace("-", "");
+				Console.WriteLine($"                            guid.ToByteArray(): {hex}");
+				if (BitConverter.IsLittleEndian)
+				{
+					Assert.IsFalse(hex == guidN);
+				}
+				else
+				{
+					Assert.IsTrue(hex == guidN);
+				}
+
+				var bytesStringRepresentation = guid.ToByteArrayMatchingStringRepresentation();
+				var hexStringRepresentation = BitConverter.ToString(bytesStringRepresentation).ToLower().Replace("-", "");
+				Console.WriteLine($"guid.ToByteArrayMatchingStringRepresentation(): {hexStringRepresentation}");
+				Assert.IsTrue(hexStringRepresentation == guidN);
+			}
+		}
 	}
 }
