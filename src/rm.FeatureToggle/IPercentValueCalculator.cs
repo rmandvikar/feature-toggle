@@ -3,11 +3,11 @@
 	/// <summary>
 	/// Defines methods to deterministically calculate percent value.
 	/// </summary>
-	public interface IPercentValueCalculator
+	internal interface IPercentValueCalculator
 	{
 		/// <summary>
-		/// Returns a deterministic value [0.01, 100.00] for given <paramref name="bytes"/>.
+		/// Returns a deterministic value [0.01, 100.00] for given <paramref name="id"/>.
 		/// </summary>
-		double Calculate(byte[] bytes);
+		double Calculate(string id);
 	}
 }

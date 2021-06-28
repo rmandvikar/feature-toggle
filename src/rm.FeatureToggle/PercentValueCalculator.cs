@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Numerics;
+using System.Text;
 
 namespace rm.FeatureToggle
 {
 	/// <inheritdoc cref="IPercentValueCalculator"/>
-	public class PercentValueCalculator : IPercentValueCalculator
+	internal class PercentValueCalculator : IPercentValueCalculator
 	{
 		/// <inheritdoc/>
-		public double Calculate(byte[] bytes)
+		public double Calculate(string id)
 		{
-			_ = bytes
-				?? throw new ArgumentNullException(nameof(bytes));
+			var bytes = Encoding.ASCII.GetBytes(id);
 
 			// 0.01-100.00
 			// note: GetHashCode()) seems like an ideal candidate
