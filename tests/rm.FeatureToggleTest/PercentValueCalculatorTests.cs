@@ -1,77 +1,34 @@
 ﻿using System;
 using NUnit.Framework;
 using rm.FeatureToggle;
-using rm.Random2;
 
 namespace rm.FeatureToggleTest
 {
 	[TestFixture]
 	public class PercentValueCalculatorTests
 	{
-		private static readonly Random rng = RandomFactory.GetThreadStaticRandom();
-		private const int iterations = 5;
-
 		[TestFixture]
 		public class Calculate
 		{
 			[Test]
-			[TestCase(0)]
-			[TestCase(int.MaxValue)]
-			[TestCase(int.MinValue)]
-			public void Verify_Calculate_For_Determinism_Int(int intValue)
+			[TestCase("ascii", 13.62d)]
+			[TestCase("boom!", 3.23d)]
+			[TestCase("bond. james bond.", 21.63d)]
+			[TestCase("roll roll roll", 56.83d)]
+			[TestCase("\0\0", 0.01d)]
+			public void Verify_Calculate(string id, double percentage)
 			{
 				var percentValueCalculator = new PercentValueCalculator();
-				// no need to worry about endianness
-				var bytes = BitConverter.GetBytes(intValue);
-				var expectedValue = percentValueCalculator.Calculate(bytes);
-
-				for (int i = 0; i < iterations; i++)
-				{
-					var value = percentValueCalculator.Calculate(bytes);
-					Assert.AreEqual(expectedValue, value);
-				}
+				Assert.AreEqual(percentage, percentValueCalculator.Calculate(id));
 			}
 
 			[Test]
-			[TestCase(short.MaxValue)]
-			[TestCase(short.MinValue)]
-			public void Verify_Calculate_For_Determinism_Short(short shortValue)
-			{
-				var percentValueCalculator = new PercentValueCalculator();
-				// no need to worry about endianness
-				var bytes = BitConverter.GetBytes(shortValue);
-				var expectedValue = percentValueCalculator.Calculate(bytes);
-
-				for (int i = 0; i < iterations; i++)
-				{
-					var value = percentValueCalculator.Calculate(bytes);
-					Assert.AreEqual(expectedValue, value);
-				}
-			}
-
-			[Test]
-			public void Verify_Calculate_For_Determinism_Random()
-			{
-				var percentValueCalculator = new PercentValueCalculator();
-				var n = rng.Next();
-				// no need to worry about endianness
-				var bytes = BitConverter.GetBytes(n);
-				var expectedValue = percentValueCalculator.Calculate(bytes);
-
-				for (int i = 0; i < iterations; i++)
-				{
-					var value = percentValueCalculator.Calculate(bytes);
-					Assert.AreEqual(expectedValue, value);
-				}
-			}
-
-			[Test]
-			[TestCase((byte[])null)]
-			public void Verify_Calculate_For_Edge_Values(byte[] bytes)
+			[TestCase((string)null)]
+			public void Verify_Calculate_For_Edge_Values(string id)
 			{
 				var percentValueCalculator = new PercentValueCalculator();
 				Assert.Throws<ArgumentNullException>(() =>
-					percentValueCalculator.Calculate(bytes));
+					percentValueCalculator.Calculate(id));
 			}
 		}
 	}
