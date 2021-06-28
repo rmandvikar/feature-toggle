@@ -1,68 +1,97 @@
 ﻿using System;
 using NUnit.Framework;
 using rm.FeatureToggle;
-using rm.Random2;
 
 namespace rm.FeatureToggleTest
 {
 	[TestFixture]
 	public class PercentValueCalculatorTests
 	{
-		private static readonly Random rng = RandomFactory.GetThreadStaticRandom();
-		private const int iterations = 5;
-
 		[TestFixture]
 		public class Calculate
 		{
 			[Test]
-			[TestCase(0)]
-			[TestCase(int.MaxValue)]
-			[TestCase(int.MinValue)]
-			public void Verify_Calculate_For_Determinism_Int(int intValue)
+			[TestCase(0, 0.01d)]
+			[TestCase(int.MaxValue, 36.48d)]
+			[TestCase(int.MinValue, 36.49d)]
+			public void Verify_Calculate_For_Determinism_Int_LittleEndian(int value, double expectedValue)
 			{
 				var percentValueCalculator = new PercentValueCalculator();
 				// no need to worry about endianness
-				var bytes = BitConverter.GetBytes(intValue);
-				var expectedValue = percentValueCalculator.Calculate(bytes);
-
-				for (int i = 0; i < iterations; i++)
+				var bytes = BitConverter.GetBytes(value);
+				if (BitConverter.IsLittleEndian)
 				{
-					var value = percentValueCalculator.Calculate(bytes);
-					Assert.AreEqual(expectedValue, value);
+					// noop
 				}
+				else
+				{
+					Array.Reverse(bytes);
+				}
+
+				Assert.AreEqual(expectedValue, percentValueCalculator.Calculate(bytes));
 			}
 
 			[Test]
-			[TestCase(short.MaxValue)]
-			[TestCase(short.MinValue)]
-			public void Verify_Calculate_For_Determinism_Short(short shortValue)
+			[TestCase(0, 0.01d)]
+			[TestCase(int.MaxValue, 1.30d)]
+			[TestCase(int.MinValue, 1.29d)]
+			public void Verify_Calculate_For_Determinism_Int_BigEndian(int value, double expectedValue)
 			{
 				var percentValueCalculator = new PercentValueCalculator();
 				// no need to worry about endianness
-				var bytes = BitConverter.GetBytes(shortValue);
-				var expectedValue = percentValueCalculator.Calculate(bytes);
-
-				for (int i = 0; i < iterations; i++)
+				var bytes = BitConverter.GetBytes(value);
+				if (BitConverter.IsLittleEndian)
 				{
-					var value = percentValueCalculator.Calculate(bytes);
-					Assert.AreEqual(expectedValue, value);
+					Array.Reverse(bytes);
 				}
+				else
+				{
+					// noop
+				}
+
+				Assert.AreEqual(expectedValue, percentValueCalculator.Calculate(bytes));
 			}
 
 			[Test]
-			public void Verify_Calculate_For_Determinism_Random()
+			[TestCase(0, 0.01d)]
+			[TestCase(short.MaxValue, 27.68d)]
+			[TestCase(short.MinValue, 27.69d)]
+			public void Verify_Calculate_For_Determinism_Short_LittleEndian(short value, double expectedValue)
 			{
 				var percentValueCalculator = new PercentValueCalculator();
-				var n = rng.Next();
 				// no need to worry about endianness
-				var bytes = BitConverter.GetBytes(n);
-				var expectedValue = percentValueCalculator.Calculate(bytes);
-
-				for (int i = 0; i < iterations; i++)
+				var bytes = BitConverter.GetBytes(value);
+				if (BitConverter.IsLittleEndian)
 				{
-					var value = percentValueCalculator.Calculate(bytes);
-					Assert.AreEqual(expectedValue, value);
+					// noop
 				}
+				else
+				{
+					Array.Reverse(bytes);
+				}
+
+				Assert.AreEqual(expectedValue, percentValueCalculator.Calculate(bytes));
+			}
+
+			[Test]
+			[TestCase(0, 0.01d)]
+			[TestCase(short.MaxValue, 1.30d)]
+			[TestCase(short.MinValue, 1.29d)]
+			public void Verify_Calculate_For_Determinism_Short_BigEndian(short value, double expectedValue)
+			{
+				var percentValueCalculator = new PercentValueCalculator();
+				// no need to worry about endianness
+				var bytes = BitConverter.GetBytes(value);
+				if (BitConverter.IsLittleEndian)
+				{
+					Array.Reverse(bytes);
+				}
+				else
+				{
+					// noop
+				}
+
+				Assert.AreEqual(expectedValue, percentValueCalculator.Calculate(bytes));
 			}
 
 			[Test]
