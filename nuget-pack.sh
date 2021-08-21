@@ -18,6 +18,7 @@ metadata="$commit_hash"
 dotnet pack src/rm.FeatureToggle/rm.FeatureToggle.csproj \
 	-c Release \
 	-o .nupkg/ \
+	//p:Version="$version" \
 	//p:PackageVersion="$version+$metadata" \
 	//p:PackageReleaseNotes="tag: $tag" \
 	&& git tag "$tag" -m "Create nuget tag $tag"
