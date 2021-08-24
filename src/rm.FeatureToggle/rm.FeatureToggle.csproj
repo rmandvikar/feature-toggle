@@ -10,6 +10,7 @@
     <Authors>hippy</Authors>
     <Company>hippy</Company>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <DebugType>Full</DebugType>
   </PropertyGroup>
 
 </Project>
