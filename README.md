@@ -16,3 +16,7 @@
 
 `ToDial(guid, percentage)` returns `true` if the calculated value of `guid` (`[0.01-100.00]` and deterministic, taking endianness into consideration) is less than or equal to `percentage`. This dial makes the dialing a function of something (guid) versus randomness. It's deterministic so `IsDial(guid, percentage)` will keep returning `true` as long as the `percentage` is same or increasing.
 
+#### Probability
+
+`IsTrue(percentage)` returns `true` with a `percentage` probability. It acts as a helper method, and is used internally by `PercentageDial`.
+
