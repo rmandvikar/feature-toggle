@@ -3,13 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1591</NoWarn>
     <Description>Few dials for feature toggle.</Description>
     <PackageTags>feature toggle</PackageTags>
     <RepositoryUrl>https://github.com/rmandvikar/feature-toggle</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/rmandvikar/feature-toggle</PackageProjectUrl>
     <Authors>hippy</Authors>
     <Company>hippy</Company>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
 </Project>
