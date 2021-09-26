@@ -34,8 +34,8 @@ namespace rm.FeatureToggle
 			//	if -99, then percentage 99 will be 100%, so -100
 			//	if 0-, then percentage 1 will be 2 parts for 0, 1, so 1-
 			//	so 1-100, i.e. rng.Next(1-101)
-			var randomDialValue = (double)rng.Next(1, 100_01) / 100;
-			return randomDialValue <= percentage;
+			var randomValue = (double)rng.Next(1, 100_01) / 100;
+			return randomValue <= percentage;
 		}
 	}
 }
