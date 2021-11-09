@@ -6,7 +6,7 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>1591</NoWarn>
+    <NoWarn>$(NoWarn);1591</NoWarn>
     <Description>Few dials for feature toggle.</Description>
     <PackageTags>feature toggle</PackageTags>
     <RepositoryUrl>https://github.com/rmandvikar/feature-toggle</RepositoryUrl>
