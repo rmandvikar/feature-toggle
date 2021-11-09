@@ -8,6 +8,10 @@ namespace rm.FeatureToggle
 		private readonly ICountDial countDial;
 		private readonly IPercentageDial percentageDial;
 
+		/// <param name="rng">
+		/// rng.
+		/// <para>Note: <paramref name="rng"/> needs to be thread-safe.</para>
+		/// </param>
 		public CountThenPercentageDial(Random rng)
 		{
 			_ = rng

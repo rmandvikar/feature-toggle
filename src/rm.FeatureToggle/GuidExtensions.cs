@@ -2,6 +2,9 @@
 
 namespace rm.FeatureToggle
 {
+	/// <summary>
+	/// Guid extensions.
+	/// </summary>
 	public static class GuidExtensions
 	{
 		/// <note>
