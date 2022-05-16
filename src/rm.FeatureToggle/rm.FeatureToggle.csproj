@@ -15,4 +15,8 @@
     <Company>hippy</Company>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Standart.Hash.xxHash" Version="3.1.0" />
+  </ItemGroup>
+
 </Project>
