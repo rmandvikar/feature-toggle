@@ -11,11 +11,12 @@ public class PercentValueCalculatorTests
 	public class Calculate
 	{
 		[Test]
-		[TestCase("ascii", 13.62d)]
-		[TestCase("boom!", 3.23d)]
-		[TestCase("bond. james bond.", 21.63d)]
-		[TestCase("roll roll roll", 56.83d)]
-		[TestCase("\0\0", 0.01d)]
+		[TestCase("ascii", 98.73d)]
+		[TestCase("boom!", 46.88d)]
+		[TestCase("bond. james bond.", 57.89d)]
+		[TestCase("roll roll roll", 19.02d)]
+		[TestCase("\0\0", 0.98d)]
+		[TestCase("", 0d)]
 		public void Verify_Calculate(string id, double percentage)
 		{
 			var percentValueCalculator = new PercentValueCalculator();
