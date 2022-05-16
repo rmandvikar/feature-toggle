@@ -15,4 +15,8 @@
     <Company>hippy</Company>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="K4os.Hash.xxHash" Version="1.0.7" />
+  </ItemGroup>
+
 </Project>
