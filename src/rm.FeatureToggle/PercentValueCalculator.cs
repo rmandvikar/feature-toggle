@@ -1,6 +1,5 @@
-﻿using System;
-using System.Numerics;
-using System.Text;
+﻿using System.Text;
+using K4os.Hash.xxHash;
 
 namespace rm.FeatureToggle;
 
@@ -16,8 +15,7 @@ internal class PercentValueCalculator : IPercentValueCalculator
 		// note: GetHashCode()) seems like an ideal candidate
 		// but hashCode could be different across app domains, processes,
 		// platforms, .net implementations, etc
-		var n = new BigInteger(bytes);
-		n = BigInteger.Abs(n);
+		var n = XXH64.DigestOf(bytes);
 		return ((int)(n % 100_00) + 1) / (double)100;
 	}
 }

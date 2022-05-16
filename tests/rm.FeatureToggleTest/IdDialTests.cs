@@ -16,8 +16,9 @@ public class IdDialTests
 	public class ToDial
 	{
 		[Test]
-		[TestCase("ascii", 13.62d, true)]
-		[TestCase("\0\0", 0.01d, true)]
+		[TestCase("ascii", 98.73d, true)]
+		[TestCase("\0\0", 0.98d, true)]
+		[TestCase("", 69.22d, true)]
 		public void Verify_ToDial(string id, double percentage, bool toDial)
 		{
 			var dial = new IdDial();
