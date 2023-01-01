@@ -11,9 +11,14 @@
     <PackageTags>feature toggle</PackageTags>
     <RepositoryUrl>https://github.com/rmandvikar/feature-toggle</RepositoryUrl>
     <PackageProjectUrl>https://github.com/rmandvikar/feature-toggle</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>hippy</Authors>
     <Company>hippy</Company>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="K4os.Hash.xxHash" Version="1.0.7" />
