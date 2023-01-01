@@ -20,4 +20,8 @@
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="rm.Clock" Version="1.0.1" />
+  </ItemGroup>
+
 </Project>
