@@ -1,35 +1,34 @@
 ﻿using System;
 
-namespace rm.FeatureToggle
+namespace rm.FeatureToggle;
+
+/// <inheritdoc cref="IProbability"/>
+public class Probability : IProbability
 {
-	/// <inheritdoc cref="IProbability"/>
-	public class Probability : IProbability
+	private readonly Random rng;
+
+	/// <param name="rng">
+	/// rng.
+	/// <para>Note: <paramref name="rng"/> needs to be thread-safe.</para>
+	/// </param>
+	public Probability(Random rng)
 	{
-		private readonly Random rng;
+		this.rng = rng
+			?? throw new ArgumentNullException(nameof(rng));
+	}
 
-		/// <param name="rng">
-		/// rng.
-		/// <para>Note: <paramref name="rng"/> needs to be thread-safe.</para>
-		/// </param>
-		public Probability(Random rng)
+	/// <inheritdoc/>
+	public bool IsTrue(double percentage)
+	{
+		if (percentage <= 0)
 		{
-			this.rng = rng
-				?? throw new ArgumentNullException(nameof(rng));
+			return false;
+		}
+		if (percentage >= 100)
+		{
+			return true;
 		}
 
-		/// <inheritdoc/>
-		public bool IsTrue(double percentage)
-		{
-			if (percentage <= 0)
-			{
-				return false;
-			}
-			if (percentage >= 100)
-			{
-				return true;
-			}
-
-			return rng.NextPercentage() <= percentage;
-		}
+		return rng.NextPercentage() <= percentage;
 	}
 }

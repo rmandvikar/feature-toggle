@@ -1,27 +1,26 @@
 ﻿using System;
 
-namespace rm.FeatureToggle
+namespace rm.FeatureToggle;
+
+public static class AsciiHelper
 {
-	public static class AsciiHelper
+	public static bool IsAscii(this string s)
 	{
-		public static bool IsAscii(this string s)
-		{
-			_ = s
-				?? throw new ArgumentNullException(nameof(s));
+		_ = s
+			?? throw new ArgumentNullException(nameof(s));
 
-			foreach (var ch in s)
+		foreach (var ch in s)
+		{
+			if (!ch.IsAscii())
 			{
-				if (!ch.IsAscii())
-				{
-					return false;
-				}
+				return false;
 			}
-			return true;
 		}
+		return true;
+	}
 
-		public static bool IsAscii(this char ch)
-		{
-			return 0 <= ch && ch <= 127;
-		}
+	public static bool IsAscii(this char ch)
+	{
+		return 0 <= ch && ch <= 127;
 	}
 }

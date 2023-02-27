@@ -1,29 +1,28 @@
-﻿namespace rm.FeatureToggle
-{
-	/// <inheritdoc cref="ICountDial"/>
-	public class CountDial : ICountDial
-	{
-		private readonly object _lock = new object();
-		private long i;
+﻿namespace rm.FeatureToggle;
 
-		/// <inheritdoc/>
-		public bool ToDial(long count)
+/// <inheritdoc cref="ICountDial"/>
+public class CountDial : ICountDial
+{
+	private readonly object _lock = new object();
+	private long i;
+
+	/// <inheritdoc/>
+	public bool ToDial(long count)
+	{
+		if (count <= 0)
 		{
-			if (count <= 0)
+			return false;
+		}
+		lock (_lock)
+		{
+			if (i >= count)
 			{
 				return false;
 			}
-			lock (_lock)
+			else // i < count
 			{
-				if (i >= count)
-				{
-					return false;
-				}
-				else // i < count
-				{
-					i++;
-					return true;
-				}
+				i++;
+				return true;
 			}
 		}
 	}
