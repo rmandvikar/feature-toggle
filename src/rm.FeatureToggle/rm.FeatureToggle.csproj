@@ -13,12 +13,13 @@
     <RepositoryUrl>https://github.com/rmandvikar/feature-toggle</RepositoryUrl>
     <PackageProjectUrl>https://github.com/rmandvikar/feature-toggle</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Authors>hippy</Authors>
     <Company>hippy</Company>
   </PropertyGroup>
-
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
