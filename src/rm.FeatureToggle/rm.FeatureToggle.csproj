@@ -8,6 +8,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591;NU1507</NoWarn>
     <LangVersion>latest</LangVersion>
+    <PackageId>rmandvikar.FeatureToggle</PackageId>
     <Description>Few dials for feature toggle.</Description>
     <PackageTags>feature toggle</PackageTags>
     <RepositoryUrl>https://github.com/rmandvikar/feature-toggle</RepositoryUrl>
@@ -24,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="K4os.Hash.xxHash" />
-    <PackageReference Include="rm.Clock" />
+    <PackageReference Include="rmandvikar.Clock" />
   </ItemGroup>
 
 </Project>
