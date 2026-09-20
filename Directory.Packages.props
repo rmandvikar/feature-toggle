@@ -11,6 +11,6 @@
     <PackageVersion Include="NUnit" Version="3.13.3" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.3.1" />
     <PackageVersion Include="rm.Clock" Version="1.1.0" />
-    <PackageVersion Include="rm.Random2" Version="3.0.5" />
+    <PackageVersion Include="rm.Random2" Version="3.1.1" />
   </ItemGroup>
 </Project>
